@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources>
+    <string name="search_hint">Search...</string>
+    <string name="close_hint">Clear Search</string>
+    <string name="search_results">Search Results</string>
+    <string name="favorites">Favorites</string>
+    <string name="no_search_results">Requested Book not found in Library</string>
+    <string name="no_favorites_results">You currently have no favorites yet. Mark some and they will appear here.</string>
+    <string name="error_disk_full">Your favorite Books have grown too powerful for you Storage to handle.</string>
+    <string name="error_unknown">UNKNOWN</string>
+    <string name="error_request_timeout">The Request timed out.</string>
+    <string name="error_no_internet">Library not reachable. Please check you connection.</string>
+    <string name="error_too_many_request">Too many readers in the Library.</string>
+    <string name="error_serialization">Failed to understand the mystic response content.</string>
+</resources>
