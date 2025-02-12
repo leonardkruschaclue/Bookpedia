@@ -5,6 +5,15 @@
     <string name="close_hint">Clear Search</string>
     <string name="search_results">Search Results</string>
     <string name="favorites">Favorites</string>
+    <string name="book_cover">The Book cover is displayed here</string>
+    <string name="rating">Rating</string>
+    <string name="pages">Pages</string>
+    <string name="languages">Languages</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="description_unavailable">Description not available</string>
+    <string name="mark_as_favorites">Mark as favorites</string>
+    <string name="remove_from_favorites">Remove from favorites</string>
+    <string name="go_back">Go Back</string>
     <string name="no_search_results">Requested Book not found in Library</string>
     <string name="no_favorites_results">You currently have no favorites yet. Mark some and they will appear here.</string>
     <string name="error_disk_full">Your favorite Books have grown too powerful for you Storage to handle.</string>
