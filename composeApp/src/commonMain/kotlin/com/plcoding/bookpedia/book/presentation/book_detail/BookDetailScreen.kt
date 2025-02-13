@@ -74,7 +74,7 @@ private fun BookDetailScreen(state: BookDetailsState, onAction: (BookDetailActio
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = state.book.authors.joinToString(),
+                    text = state.book.authors?.joinToString() ?: "",
                     style = MaterialTheme.typography.titleMedium,
                     textAlign = TextAlign.Center
                 )
