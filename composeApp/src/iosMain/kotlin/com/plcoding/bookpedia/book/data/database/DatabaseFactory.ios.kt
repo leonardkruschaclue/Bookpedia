@@ -25,7 +25,6 @@ actual class DatabaseFactory {
             create = false,
             error = null
         )
-        requireNotNull(documentDirectory?.path)
-
+        return requireNotNull(documentDirectory?.path)
     }
 }
