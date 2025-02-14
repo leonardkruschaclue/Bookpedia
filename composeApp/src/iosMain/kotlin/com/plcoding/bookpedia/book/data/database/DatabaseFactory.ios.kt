@@ -1,7 +1,13 @@
+@file:OptIn(ExperimentalForeignApi::class)
+
 package com.plcoding.bookpedia.book.data.database
 
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import kotlinx.cinterop.ExperimentalForeignApi
+import platform.Foundation.NSDocumentDirectory
+import platform.Foundation.NSFileManager
+import platform.Foundation.NSUserDomainMask
 
 actual class DatabaseFactory {
     actual fun create(): RoomDatabase.Builder<FavoriteBookDatabase> {
@@ -17,7 +23,7 @@ actual class DatabaseFactory {
             inDomain = NSUserDomainMask,
             appropriateForURL = null,
             create = false,
-            error=null
+            error = null
         )
         requireNotNull(documentDirectory?.path)
 
