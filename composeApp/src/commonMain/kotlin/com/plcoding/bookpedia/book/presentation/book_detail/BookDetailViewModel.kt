@@ -7,6 +7,7 @@ import androidx.navigation.toRoute
 import com.plcoding.bookpedia.app.Routes
 import com.plcoding.bookpedia.book.domain.BookRepository
 import com.plcoding.bookpedia.core.domain.onSuccess
+import com.plcoding.bookpedia.core.domain.toOptional
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.launchIn
@@ -54,7 +55,7 @@ class BookDetailViewModel(
                 _state.update {
                     it.copy(
                         book = it.book?.copy(
-                            description = description
+                            description = description.toOptional()
                         ),
                         isLoading = false
                     )

@@ -36,6 +36,8 @@ import com.plcoding.bookpedia.book.presentation.book_detail.components.BlurredIm
 import com.plcoding.bookpedia.book.presentation.book_detail.components.BookChip
 import com.plcoding.bookpedia.book.presentation.book_detail.components.ChipSize
 import com.plcoding.bookpedia.book.presentation.book_detail.components.TitledContent
+import com.plcoding.bookpedia.core.domain.map
+import com.plcoding.bookpedia.core.domain.orElse
 import com.plcoding.bookpedia.core.presentation.SandYellow
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.round
@@ -74,7 +76,7 @@ private fun BookDetailScreen(state: BookDetailsState, onAction: (BookDetailActio
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = state.book.authors?.joinToString() ?: "",
+                    text = state.book.authors.map { it.joinToString() }.orElse("Unknown"),
                     style = MaterialTheme.typography.titleMedium,
                     textAlign = TextAlign.Center
                 )
@@ -82,27 +84,22 @@ private fun BookDetailScreen(state: BookDetailsState, onAction: (BookDetailActio
                     modifier = Modifier.padding(vertical = 8.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    state.book.ratingAverage?.let {
-                        TitledContent(title = stringResource(Res.string.rating)) {
-                            BookChip {
-                                Text(
-                                    text = "${round(it * 10) / 10f}"
-                                )
-                                Icon(
-                                    imageVector = Icons.Default.Star,
-                                    contentDescription = null,
-                                    tint = SandYellow
-                                )
-                            }
+                    TitledContent(title = stringResource(Res.string.rating)) {
+                        BookChip {
+                            Text(text = state.book.ratingAverage.map { "${round(it * 10) / 10f}" }
+                                .orElse("N/A"))
+                            Icon(
+                                imageVector = Icons.Default.Star,
+                                contentDescription = null,
+                                tint = SandYellow
+                            )
                         }
                     }
-                    state.book.numPages?.let {
-                        TitledContent(title = stringResource(Res.string.pages)) {
-                            BookChip {
-                                Text(
-                                    text = it.toString()
-                                )
-                            }
+                    TitledContent(title = stringResource(Res.string.pages)) {
+                        BookChip {
+                            Text(
+                                text = state.book.numPages.map { it.toString() }.orElse("N/A")
+                            )
                         }
                     }
                 }
@@ -136,8 +133,7 @@ private fun BookDetailScreen(state: BookDetailsState, onAction: (BookDetailActio
                     CircularProgressIndicator()
                 } else {
                     Text(
-                        text = state.book.description
-                            ?: stringResource(Res.string.description_unavailable),
+                        text = state.book.description.orElse(stringResource(Res.string.description_unavailable)),
                         style = MaterialTheme.typography.bodyMedium,
                         textAlign = TextAlign.Justify,
                         color = Color.Black,

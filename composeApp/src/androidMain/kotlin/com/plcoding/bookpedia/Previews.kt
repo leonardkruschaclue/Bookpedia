@@ -5,6 +5,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.plcoding.bookpedia.book.domain.Book
 import com.plcoding.bookpedia.book.presentation.book_list.BookListScreen
 import com.plcoding.bookpedia.book.presentation.book_list.BookListState
+import com.plcoding.bookpedia.core.domain.Optional
 
 //@Preview
 //@Composable
@@ -23,13 +24,13 @@ private val books = (1..100).map {
         id = it.toString(),
         title = "Book$it",
         imageUrl = "test",
-        authors = listOf("Leo"),
-        description = "Description$it",
+        authors = Optional.Just(listOf("Leo")),
+        description = Optional.Just("Description$it"),
         languages = listOf("EN", "DE"),
-        firstPublishYear = "2001",
-        ratingAverage = 4.6345,
-        ratingCount = 12,
-        numPages = 450,
+        firstPublishYear = Optional.Just("2001"),
+        ratingAverage = Optional.Just(4.6345),
+        ratingCount = Optional.Just(12),
+        numPages = Optional.Just(450),
         numEditions = 3
     )
 }
@@ -40,6 +41,7 @@ private fun BookListPreview() {
     BookListScreen(
         state = BookListState(
             searchResults = books,
+            isLoading = false
         ),
         onAction = {}
     )

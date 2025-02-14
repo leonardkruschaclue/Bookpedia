@@ -37,6 +37,8 @@ import cmp_bookpedia.composeapp.generated.resources.Res
 import cmp_bookpedia.composeapp.generated.resources.book_error_2
 import coil3.compose.rememberAsyncImagePainter
 import com.plcoding.bookpedia.book.domain.Book
+import com.plcoding.bookpedia.core.domain.map
+import com.plcoding.bookpedia.core.domain.orElse
 import com.plcoding.bookpedia.core.presentation.LightBlue
 import com.plcoding.bookpedia.core.presentation.PulseAnimation
 import com.plcoding.bookpedia.core.presentation.SandYellow
@@ -100,15 +102,15 @@ fun BookListItem(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
-                book.authors?.firstOrNull()?.let { authorName ->
+                book.authors.map { it.first() }.let { optionalAuthorName ->
                     Text(
-                        text = authorName,
+                        text = optionalAuthorName.orElse("Unknown"),
                         style = MaterialTheme.typography.bodyLarge,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
                 }
-                book.ratingAverage?.let { rating ->
+                book.ratingAverage.map { rating ->
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -122,7 +124,7 @@ fun BookListItem(
                             tint = SandYellow
                         )
                     }
-                }
+                }.orElse(Unit)
             }
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,

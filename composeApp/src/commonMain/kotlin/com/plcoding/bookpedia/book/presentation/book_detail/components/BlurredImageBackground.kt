@@ -115,7 +115,7 @@ fun BlurredImageBackground(
                                 painter = if (it.isSuccess) painter else painterResource(Res.drawable.book_error_2),
                                 contentDescription = stringResource(Res.string.book_cover),
                                 modifier = Modifier.fillMaxSize().background(Color.Transparent),
-                                contentScale = if (it.isSuccess) ContentScale.Crop else ContentScale.Fit
+                                contentScale = if (it.isSuccess) ContentScale.Crop else ContentScale.Crop
                             )
                             IconButton(
                                 onClick = onFavoriteClick,
